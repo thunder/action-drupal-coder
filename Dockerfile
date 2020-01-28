@@ -9,8 +9,12 @@ RUN apk --no-cache add git
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
-# TODO: Install a linter and/or change docker image as you need.
-RUN wget -O - -q https://git.io/misspell | sh -s -- -b /usr/local/bin/
+# Install phpcs and drupalcs
+RUN composer global require drupal/coder
+
+ENV PATH="${PATH}:${HOME}/.composer/vendor/bin"
+
+RUN phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
 
 COPY entrypoint.sh /entrypoint.sh
 
