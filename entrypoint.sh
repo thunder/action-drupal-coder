@@ -7,8 +7,6 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
-
 phpcs --standard=Drupal --extensions='php,module,inc,install,test,profile,theme' --report=checkstyle -q .
 
 phpcs --standard=Drupal --extensions='php,module,inc,install,test,profile,theme' --report=checkstyle -q . \
