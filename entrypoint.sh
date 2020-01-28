@@ -7,8 +7,6 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-phpcs --standard=Drupal --extensions='php,module,inc,install,test,profile,theme' --report=checkstyle -q .
-
 phpcs --standard=Drupal --extensions='php,module,inc,install,test,profile,theme' --report=checkstyle -q . \
   | reviewdog -f="checkstyle" -name="drupal-coder (drupal)" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
