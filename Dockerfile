@@ -1,4 +1,4 @@
-FROM composer:1.9.1 AS composer-build
+FROM composer:1.9.1 AS composer
 FROM php:7.4-cli-alpine3.11
 
 ENV REVIEWDOG_VERSION=v0.9.17
@@ -8,14 +8,13 @@ RUN apk --no-cache add git
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
-COPY --from=composer-build /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
-# Install phpcs and drupalcs
+# Install phpcs and set the code sniffer path
 RUN composer global require drupal/coder && \
-    phpcs --config-set installed_paths /root/.composer/vendor/drupal/coder/coder_sniffer/ \
-    && phpcs --config-set default_standard Drupal,DrupalPractice
+    phpcs --config-set installed_paths /root/.composer/vendor/drupal/coder/coder_sniffer/
 
 COPY entrypoint.sh /entrypoint.sh
 
