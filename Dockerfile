@@ -2,8 +2,6 @@ FROM php:7.4-cli
 
 ENV REVIEWDOG_VERSION=v0.9.17
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-
 # hadolint ignore=DL3006
 RUN apk --no-cache add git
 
