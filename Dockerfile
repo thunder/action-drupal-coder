@@ -1,5 +1,5 @@
+FROM composer:1.9.1 AS composer-build
 FROM php:7.4-cli-alpine3.11
-FROM composer:1.9.1 as composer-build
 
 ENV REVIEWDOG_VERSION=v0.9.17
 
