@@ -7,5 +7,8 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-misspell -locale="${INPUT_LOCALE}" . \
-  | reviewdog -efm="%f:%l:%c: %m" -name="linter-name (misspell)" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+phpcs --standard=Drupal --extensions='php,module,inc,install,test,profile,theme' --report=checkstyle -q . \
+  | reviewdog -f="checkstyle" -name="drupal-coder (drupal)" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+
+phpcs --standard=DrupalPractice --extensions='php,module,inc,install,test,profile,theme,css,info,txt,md' --report=checkstyle -q  . \
+  | reviewdog -f="checkstyle" -name="drupal-coder (drupal practice)" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"

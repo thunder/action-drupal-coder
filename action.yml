@@ -12,10 +12,6 @@ inputs:
   reporter:
     description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
     default: 'github-pr-check'
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
