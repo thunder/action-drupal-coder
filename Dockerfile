@@ -10,12 +10,12 @@ RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/in
 
 COPY --from=composer-build /usr/bin/composer /usr/bin/composer
 
+ENV PATH="${PATH}:/root/.composer/vendor/bin"
+
 # Install phpcs and drupalcs
 RUN composer global require drupal/coder && \
     phpcs --config-set installed_paths /root/.composer/vendor/drupal/coder/coder_sniffer/ \
     && phpcs --config-set default_standard Drupal,DrupalPractice
-
-ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 COPY entrypoint.sh /entrypoint.sh
 
