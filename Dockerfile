@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM php:7.4-cli-alpine3.11
 
 ENV REVIEWDOG_VERSION=v0.9.17
 
