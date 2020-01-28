@@ -12,7 +12,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install phpcs and drupalcs
 RUN composer global require drupal/coder
 
-ENV PATH="${PATH}:${HOME}/.composer/vendor/bin"
+ENV PATH="${PATH}:~/.composer/vendor/bin"
 
 RUN phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
 
