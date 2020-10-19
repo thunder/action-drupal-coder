@@ -10,6 +10,7 @@
 
 This is a GitHub action that checks your drupal module against the drupal coding styles (Drupal, DrupalPractice) and outputs the warnings and errors using [reviewdog](https://github.com/reviewdog/reviewdog).
 
+By default only issues in added/modified lines are reported.
 
 ## Input
 
