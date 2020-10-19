@@ -1,7 +1,7 @@
 FROM composer:1.9.1 AS composer
 FROM php:7.4-cli-alpine3.11
 
-ENV REVIEWDOG_VERSION=v0.9.17
+ENV REVIEWDOG_VERSION=v0.10.2
 
 # hadolint ignore=DL3006
 RUN apk --no-cache add git
