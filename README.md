@@ -20,6 +20,10 @@ inputs:
   github_token:
     description: 'GITHUB_TOKEN'
     default: '${{ github.token }}'
+  ### Flags for reviewdog ###
+  filter_mode:
+    description: 'Filter results by diff or file [added, diff_context, file, nofilter]'
+    default: 'added'
   level:
     description: 'Report level for reviewdog [info,warning,error]'
     default: 'error'
@@ -45,6 +49,8 @@ jobs:
       - uses: chrfritsch/action-drupal-coder@v1
         with:
           github_token: ${{ secrets.github_token }}
+          # Possible filter modes [added, diff_context, file, nofilter]'
+          filter_mode: added
           # Possible reviewdog reporter [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
           # Change reporter level if you need.
