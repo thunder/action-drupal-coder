@@ -1,4 +1,4 @@
-FROM composer:1 AS composer
+FROM composer:2 AS composer
 FROM php:8.0-cli-alpine
 
 ENV REVIEWDOG_VERSION=v0.13.0
