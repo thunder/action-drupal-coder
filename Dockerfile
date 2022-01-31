@@ -13,7 +13,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 # Install phpcs and set the code sniffer path
-RUN composer global require drupal/coder -y
+RUN composer global require drupal/coder
 
 COPY entrypoint.sh /entrypoint.sh
 
