@@ -3,6 +3,8 @@ FROM php:8.1-cli-alpine
 
 ENV REVIEWDOG_VERSION=v0.14.2
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # hadolint ignore=DL3006
 RUN apk --no-cache add git
 
